@@ -409,7 +409,10 @@ public class WaveProgressView extends Component implements Component.BindStateCh
 
     private Path drawCircle(int cx, int cy, int radius) {
         Path path = new Path();
-        path.addCircle((radius / 2) + cx, (radius / 2) + cy, (radius / 2) - mBorderWidth, Path.Direction.COUNTER_CLOCK_WISE);
+        path.addCircle( ((float) radius / 2) + cx,
+                ((float) radius / 2) + cy,
+                ((float) radius / 2) - mBorderWidth,
+                Path.Direction.COUNTER_CLOCK_WISE);
         path.close();
         return path;
     }

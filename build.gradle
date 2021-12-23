@@ -1,19 +1,10 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply plugin: 'com.huawei.ohos.app'
+apply plugin: 'org.sonarqube'
+apply plugin: 'checkstyle'
 
 //For instructions on signature configuration, see https://developer.harmonyos.com/en/docs/documentation/doc-guides/ide_debug_device-0000001053822404#EN-US_TOPIC_0000001154985555__section1112183053510
 ohos {
-    signingConfigs {
-        debug {
-            storeFile file('C:\\Users\\admin\\.ohos\\config\\auto_debug_2640091000002771297.p12')
-            storePassword '000000189760E8556B5D5604083BD743D8FB6B61ABBC0348B6257DBABAA34FEBD919A44779BCF212'
-            keyAlias = 'debugKey'
-            keyPassword '00000018B158A2F80E549922F51BDB781AC60C1A39A973813DFA4CCE6A5BBEDF15B76B3E523E0C7F'
-            signAlg = 'SHA256withECDSA'
-            profile file('C:\\Users\\admin\\.ohos\\config\\auto_debug_waveprogressview_2640091000002771297.p7b')
-            certpath file('C:\\Users\\admin\\.ohos\\config\\auto_debug_2640091000002771297.cer')
-        }
-    }
     compileSdkVersion 5
     defaultConfig {
         compatibleSdkVersion 5
@@ -33,6 +24,7 @@ buildscript {
     dependencies {
         classpath 'com.huawei.ohos:hap:2.4.4.2'
         classpath 'com.huawei.ohos:decctest:1.2.4.0'
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3"
     }
 }
 
@@ -45,5 +37,34 @@ allprojects {
             url 'https://developer.huawei.com/repo/'
         }
         jcenter()
+    }
+
+    task checkstyle(type: Checkstyle) {
+        showViolations = true
+        configFile file("config/checkstyle.xml")
+
+        source 'entry/src/main/java'
+        source 'library/src/main/java'
+        include '**/*.java'
+
+        // empty classpath
+        classpath = files()
+    }
+}
+
+checkstyle {
+    toolVersion "8.43"
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "applibgroup_WaveProgressView"
+        property "sonar.organization", "applibgroup"
+        //property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.login", "2941be04e456e1e5c899eeb5a3c958d9f036549a"
+        property "sonar.sources", "entry,library"
+        property "sonar.java.binaries", "entry/build,library/build"
+        property "sonar.java.checkstyle.reportPaths", "build/reports/checkstyle/checkstyle.xml"
     }
 }
