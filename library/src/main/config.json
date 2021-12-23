@@ -1,0 +1,25 @@
+{
+  "app": {
+    "bundleName": "com.github.zeng1990java.waveprogressview",
+    "vendor": "github",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {
+  },
+  "module": {
+    "package": "com.github.zeng1990java.widget",
+    "deviceType": [
+      "phone",
+      "tablet",
+      "tv"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "library",
+      "moduleType": "har"
+    }
+  }
+}

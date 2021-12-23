@@ -1,23 +1,49 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: 'com.huawei.ohos.app'
+
+//For instructions on signature configuration, see https://developer.harmonyos.com/en/docs/documentation/doc-guides/ide_debug_device-0000001053822404#EN-US_TOPIC_0000001154985555__section1112183053510
+ohos {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\admin\\.ohos\\config\\auto_debug_2640091000002771297.p12')
+            storePassword '000000189760E8556B5D5604083BD743D8FB6B61ABBC0348B6257DBABAA34FEBD919A44779BCF212'
+            keyAlias = 'debugKey'
+            keyPassword '00000018B158A2F80E549922F51BDB781AC60C1A39A973813DFA4CCE6A5BBEDF15B76B3E523E0C7F'
+            signAlg = 'SHA256withECDSA'
+            profile file('C:\\Users\\admin\\.ohos\\config\\auto_debug_waveprogressview_2640091000002771297.p7b')
+            certpath file('C:\\Users\\admin\\.ohos\\config\\auto_debug_2640091000002771297.cer')
+        }
+    }
+    compileSdkVersion 5
+    defaultConfig {
+        compatibleSdkVersion 5
+    }
+}
 
 buildscript {
     repositories {
+        maven {
+            url 'https://repo.huaweicloud.com/repository/maven/'
+        }
+        maven {
+            url 'https://developer.huawei.com/repo/'
+        }
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.3.0'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath 'com.huawei.ohos:hap:2.4.4.2'
+        classpath 'com.huawei.ohos:decctest:1.2.4.0'
     }
 }
 
 allprojects {
     repositories {
+        maven {
+            url 'https://repo.huaweicloud.com/repository/maven/'
+        }
+        maven {
+            url 'https://developer.huawei.com/repo/'
+        }
         jcenter()
     }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
