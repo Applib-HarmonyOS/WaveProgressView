@@ -511,7 +511,7 @@ public class WaveProgressView extends Component implements Component.BindStateCh
 
     @Override
     public void onComponentBoundToWindow(Component component) {
-
+        //do nothing
     }
 
     @Override

@@ -86,6 +86,7 @@ public class ValueAnimator extends AnimatorValue {
      * @param interpolator integer
      */
     public void setInterpolator(int interpolator) {
+        //do nothing
     }
 
     /**
