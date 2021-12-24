@@ -1,24 +1,22 @@
-apply plugin: 'com.android.library'
-
-android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
-
+apply plugin: 'com.huawei.ohos.library'
+//For instructions on signature configuration, see https://developer.harmonyos.com/en/docs/documentation/doc-guides/ide_debug_device-0000001053822404#EN-US_TOPIC_0000001154985555__section1112183053510
+ohos {
+    compileSdkVersion 5
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        compatibleSdkVersion 5
     }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardOpt {
+                proguardEnabled false
+                rulesFiles 'proguard-rules.pro'
+            }
         }
     }
+    
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.13'
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DependentLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    xmlns:custom="http://schemas.huawei.com/res/custom"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:alignment="center"
+    ohos:orientation="vertical">
+
+    <com.github.zeng1990java.widget.WaveProgressView
+        ohos:id="$+id:waveView3"
+        ohos:height="200vp"
+        ohos:width="200vp"
+        ohos:center_in_parent="true"
+        custom:animatorEnable="true"
+        custom:textHidden="true"
+        custom:frontColor="#FF69B4"
+        custom:behideColor="#FFC0CB"
+        custom:borderColor="#FF69B4"
+        custom:borderWidthSize="7vp"
+        custom:max="1000"
+        custom:progress="0"
+        custom:strong="80"
+        />
+
+</DependentLayout>

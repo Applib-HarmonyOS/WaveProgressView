@@ -1,3 +1,6 @@
+[![Build](https://github.com/applibgroup/WaveProgressView/actions/workflows/main.yml/badge.svg)](https://github.com/applibgroup/WaveProgressView/actions/workflows/main.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=applibgroup_WaveProgressView&metric=alert_status)](https://sonarcloud.io/dashboard?id=applibgroup_WaveProgressView)
+
 # WaveProgressView
 WaveProgressView
 
@@ -5,43 +8,41 @@ a simple progress view.
 
 <img src="/image/wave_progress_view.gif" alt="progress-circular-indeterminate" title="progress-circular-indeterminate" width="477" height="791" />
 
-###gradle
-/build.gradle
-~~~
-jitpack.io
+# Source
+This library has been inspired by [zeng1990java/WaveProgressView](https://github.com/zeng1990java/WaveProgressView).
 
-repositories {
-    maven {
-        url "https://jitpack.io"
-    }
-}
-~~~
-/app/build.gradle
-~~~
-compile 'com.github.zeng1990java:WaveProgressView:1.0.5'
-~~~
+## Integration
+
+1. For using WaveProgressView module in sample app, include the source code and add the below dependencies in entry/build.gradle to generate hap/support.har.
+```
+ implementation project(path: ':library')
+```
+2. For using WaveProgressView module in separate application using har file, add the har file in the entry/libs folder and add the dependencies in entry/build.gradle file.
+```
+ implementation fileTree(dir: 'libs', include: ['*.har'])
+```
+3. For using WaveProgressView module from a remote repository in separate application, add the below dependencies in entry/build.gradle file.
+```
+implementation 'dev.applibgroup:WaveProgressView:1.0.0'
+```
+
 ###usage
 ```xml
 <com.github.zeng1990java.widget.WaveProgressView
-        android:id="@+id/wave_progress_view"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-        android:layout_centerInParent="true"
+        ohos:id="$+id:waveView3"
+        ohos:height="200vp"
+        ohos:width="200vp"
+        ohos:center_in_parent="true"
+        custom:animatorEnable="true"
+        custom:textHidden="true"
+        custom:frontColor="#FF69B4"
+        custom:behideColor="#FFC0CB"
+        custom:borderColor="#FF69B4"
+        custom:borderWidthSize="7vp"
+        custom:max="1000"
+        custom:progress="0"
+        custom:strong="80"
         />
-
-<com.github.zeng1990java.widget.WaveProgressView
-  android:id="@+id/wave_progress_view_2"
-  android:layout_width="120dp"
-  android:layout_height="80dp"
-  android:layout_alignParentBottom="true"
-  android:layout_marginBottom="10dp"
-  android:layout_centerHorizontal="true"
-  app:waveMax="100"
-  app:waveColor="#3498db"
-  app:waveAmplitude="4dp"
-  app:waveBorderWidth="3dp"
-  app:waveBorderRadius="2dp"
-  />
 ```
 
 License
